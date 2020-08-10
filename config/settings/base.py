@@ -40,17 +40,7 @@ LOCALE_PATHS = [str(ROOT_DIR / "locale")]
 # DATABASES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
-DATABASES = {
-'default': {
-'ENGINE': 'django.db.backends.postgresql',
-'NAME': 'datamanage',
-'USER': 'postgres',
-'PASSWORD': '523127',
-'HOST': '',
-'PORT': '5432'
-}
-}
-
+DATABASES = {"default": env.db("DATABASE_URL")}
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
 # URLS
@@ -244,9 +234,8 @@ LOGGING = {
     "disable_existing_loggers": False,
     "formatters": {
         "verbose": {
-            "format": "%(levelname)s %(asctime)s %(module)s "
-            "%(process)d %(thread)d %(message)s"
-        }
+        "format": "%(levelname)s %(asctime)s %(module)s "
+        "%(process)d %(thread)d %(message)s"}   
     },
     "handlers": {
         "console": {
